@@ -1,0 +1,15 @@
+<%= render 'shared/errors' %>
+
+<h1>Goal Helper</h1>
+
+<br>
+
+<ul>
+<% if @users %>
+  <% @users.each do |user| %>
+    <li><%= link_to "#{user.username}", user_url(user) %></li>
+  <% end %>
+<% else %>
+   <li>No Users...</li>
+ <% end %>
+<ul>

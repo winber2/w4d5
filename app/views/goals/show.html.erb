@@ -1,0 +1,15 @@
+<% goal = @goal || Goal.find_by(id: params[:id]) %>
+<% user = goal.user %>
+
+<h1> <%= goal.name %> </h1>
+<h3> By <%= link_to "#{user.username}", user_url(user) %> </h3>
+
+<br>
+
+<h3>Description:</h3>
+<p> <%= goal.body %> </p>
+
+<%= link_to "User Index", users_url %>
+<% if goal.user_id == current_user.id %>
+  <%= link_to "Edit", edit_goal_url(goal)%>
+<% end %>

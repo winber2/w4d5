@@ -1,0 +1,21 @@
+<h1>CHANGE PASSWORD!</h1>
+
+<form action="<%= user_url %>"  method="post">
+  <%= auth_token %>
+
+  <input type="hidden" name="_method" value="patch">
+
+  <%= render 'shared/errors' %>
+
+  <label for="old_pass">Old Password</label>
+  <input id="old_pass" type="password" name="user[old_pass]" value="">
+
+  <br>
+
+  <label for="password">New Password</label>
+  <input id="password" type="password" name="user[password]" value="">
+
+  <br>
+
+  <input id="Submit" type="submit">
+</form>

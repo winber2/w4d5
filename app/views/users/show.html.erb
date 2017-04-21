@@ -1,0 +1,32 @@
+<% goals = @user.goals %>
+
+
+<h1> <%= @user.username %>'s userpage </h1>
+
+<%= link_to "Back to User Index", users_url %>
+
+<% if current_user == @user %>
+  <%= link_to "Edit Password", edit_user_url %>
+<% end %>
+
+<h3> <%= @user.username %>'s Goals</h3>
+
+<% if current_user == @user %>
+  <%= link_to "New Goal", new_goal_url %>
+<% end %>
+
+<br><br>
+
+<% if goals %>
+<table>
+  <% goals.each do |goal| %>
+  <tr>
+    <td> <%= link_to "#{goal.name}", goal_url(goal) %> </td>
+    <% if goal.user_id == current_user.id %>
+      <td> <%= link_to "Edit", edit_goal_url(goal)%> </td>
+      <td> <%= link_to "Delete", goal_url(goal), method: :delete %> </td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+<% end %>

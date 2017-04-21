@@ -1,0 +1,30 @@
+<%= render 'shared/errors' %>
+
+<% if action == :new %>
+  <% action_url = goals_url %>
+<% elsif action == :edit %>
+  <% action_url = goal_url(goal) %>
+<% end %>
+
+<h1>EDIT GOAL!</h1>
+
+<form action="<%= action_url %>"  method="post">
+  <%= auth_token %>
+
+  <% if action == :edit %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <label for="name">Name</label>
+  <input id="name" type="text" name="goal[name]" value="<%= goal.name %>">
+
+  <br>
+
+  <label for="body">Description</label>
+  <br>
+  <textarea name="goal[body]" rows="8" cols="80"><%= goal.body %></textarea>
+
+  <br>
+
+  <input id="Submit" type="submit">
+</form>
